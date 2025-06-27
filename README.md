@@ -6,6 +6,6 @@
    |--ai.py  #代码  
    |--requirements  
 |--normal    #普通版无ai  
--|--normal.py #代码  
+  |--normal.py #代码  
      |--requirements  
 |--test.py #最初版测试代码  
