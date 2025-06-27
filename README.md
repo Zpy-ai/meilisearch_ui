@@ -7,5 +7,5 @@
    |--requirements  
 |--normal    #普通版无ai  
   |--normal.py #代码  
-     |--requirements  
+  |--requirements  
 |--test.py #最初版测试代码  
