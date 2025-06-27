@@ -1,7 +1,7 @@
 ## 介绍
 所用大模型为千问plus
 ## 结构
-|--ai        #ai生成摘要和关键词
+|--ai        #ai生成摘要和关键词  \n
    |--images #界面图
    |--ai.py  #代码
    |--requirements
