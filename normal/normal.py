@@ -3,17 +3,10 @@ from meilisearch import Client
 import time
 import requests
 
-from openai import OpenAI
-
-
-client = OpenAI(
-    api_key="sk-139a40229c0e4bd58191a7a2f8c9c8f3",
-    base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-)
 
 # 初始化 Meilisearch 客户端（替换为你的实际地址，若有 Master Key 需添加）
 MEILI_URL = "http://10.8.130.32:7700"
-api_key = "ff962c139a9c43142b122d00f8c99f1d"  # 如果有设置 Master Key，请取消注释并填写
+api_key = "aSampleMasterKey"  # 如果有设置 Master Key，请取消注释并填写
 meili_client = Client(MEILI_URL, api_key)  # Client(MEILI_URL, "Key")
 
 
@@ -21,7 +14,7 @@ meili_client = Client(MEILI_URL, api_key)  # Client(MEILI_URL, "Key")
 def get_embedding(query):
     url = "http://10.8.130.31:6008/api/v1/embedding"
     headers = {
-        "Content-Type": "application/json",
+        "Content-Type": "ff962c139a9c43142b122d00f8c99f1d",
         "Authorization": "Bearer sk-proj-mimouse"
     }
     payload = {
@@ -56,21 +49,6 @@ def search_meilisearch_hybrid(query, knowledge_base, top_k, semantic_ratio):
         st.error(f"连接 Meilisearch 失败：{str(e)}")
         return [], False
 
-def get_summary_qianwen(text):
-    prompt = f"请用中文对以下内容生成简明摘要：\n{text}"
-    try:
-        response = client.chat.completions.create(
-            model="qwen-plus",  # 或你实际支持的模型名
-            messages=[
-                {"role": "system", "content": "你是一个专业的中文摘要助手。"},
-                {"role": "user", "content": prompt}
-            ],
-            temperature=0.3,
-            max_tokens=128
-        )
-        return response.choices[0].message.content.strip()
-    except Exception as e:
-        return f"摘要生成失败: {e}"
 
 # 侧边栏配置
 with st.sidebar:
@@ -139,12 +117,7 @@ if search_btn:
             st.write(f"🔗 来源: {hit.get('source', '无')}")
             #st.write(f"📄 摘要: {hit.get('content', '无')}")
             content = hit.get('content', '') or hit.get('abstract', '')
-            if content:
-                with st.spinner("正在生成摘要..."):
-                    summary = get_summary_qianwen(content)
-            else:
-                summary = "无内容"
-            st.write(f"📝 千问摘要: {summary}")
+            st.write(f"📝 摘要: {hit.get('abstract', '无')}")
             # 关键词数组处理
             keywords = hit.get('keyword', [])
             if isinstance(keywords, list):
