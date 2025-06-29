@@ -46,7 +46,7 @@ def search_meilisearch_hybrid(query, knowledge_base, top_k, semantic_ratio):
             {
                 "vector": embedding,
                 "hybrid": {
-                    "semanticRatio": semantic_ratio,
+                    "semanticRatio": 1 - semantic_ratio,
                     "embedder": "bge_m3"
                 },
                 "limit": top_k
