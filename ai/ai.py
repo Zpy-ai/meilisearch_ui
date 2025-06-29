@@ -12,9 +12,9 @@ client = OpenAI(
     base_url="https://dashscope.aliyuncs.com/compatible-mode/v1",
 )
 
-# 初始化 Meilisearch 客户端（替换为你的实际地址，若有 Master Key 需添加）
+# 初始化 Meilisearch 客户端（
 MEILI_URL = "http://10.8.130.32:7700"
-api_key = "ff962c139a9c43142b122d00f8c99f1d"  # 如果有设置 Master Key，请取消注释并填写
+api_key = "ff962c139a9c43142b122d00f8c99f1d"  
 meili_client = Client(MEILI_URL, api_key)  # Client(MEILI_URL, "Key")
 
 
@@ -90,12 +90,7 @@ def get_keywords_qianwen(text):
         return f"关键词生成失败: {e}"
 
 
-#def re_text(str):
-#    pattern = r'^[^\n]*\n[^\n]*\n'
-    # 替换匹配到的内容为空字符串
-#    content = re.sub(pattern, '', str)
 
-#    return content  # 输出：这是需要保留的正文内容
 
 # 侧边栏配置
 with st.sidebar:
@@ -103,10 +98,10 @@ with st.sidebar:
     # 知识库选择（需与 Meilisearch 中的索引名一致）
     knowledge_base = st.selectbox(
         "知识库", 
-        ["broker_reports"],  # 替换为实际索引名
+        ["broker_reports"], 
         help="选择要搜索的知识库"
     )
-    # 语义系数滑块（可根据业务逻辑传递给 Meilisearch）
+    # 语义系数滑块
     semantic_ratio = st.slider(
         "SemanticRatio", 
         min_value=0.0, 
@@ -192,4 +187,4 @@ if search_btn:
 
 
 
-#streamlit run test.py
+#streamlit run ai.py

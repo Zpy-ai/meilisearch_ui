@@ -4,9 +4,9 @@ import time
 import requests
 
 
-# 初始化 Meilisearch 客户端（替换为你的实际地址，若有 Master Key 需添加）
+# 初始化 Meilisearch 客户端
 MEILI_URL = "http://10.8.130.32:7700"
-api_key = "aSampleMasterKey"  # 如果有设置 Master Key，请取消注释并填写
+api_key = "aSampleMasterKey"
 meili_client = Client(MEILI_URL, api_key)  # Client(MEILI_URL, "Key")
 
 
@@ -59,7 +59,7 @@ with st.sidebar:
         ["broker_reports"],  # 替换为实际索引名
         help="选择要搜索的知识库"
     )
-    # 语义系数滑块（可根据业务逻辑传递给 Meilisearch）
+    # 语义系数滑块
     semantic_ratio = st.slider(
         "SemanticRatio", 
         min_value=0.0, 
@@ -78,7 +78,7 @@ with st.sidebar:
         help="控制搜索结果条数"
     )
     
-    # 状态显示（搜索后动态更新）
+    # 状态显示
     st.markdown("---")
     st.markdown(f"### 当前知识库：{knowledge_base}")
     search_time_placeholder = st.empty()  # 搜索耗时
