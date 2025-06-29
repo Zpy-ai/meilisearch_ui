@@ -1,5 +1,6 @@
 ## 介绍
-所用大模型为千问plus
+ai和nornal是hby配置的，ai为带有ai生成摘要和关键词。所用大模型为千问plus。
+mymeilisearch是我自己爬取艾瑞网报告信息所写的，
 ## 结构
 ```plaintext
 |--ai #ai生成摘要和关键词  
