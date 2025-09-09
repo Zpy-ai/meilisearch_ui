@@ -1,0 +1,22 @@
+{
+  "openai": {
+    "api_key": "你的通义千问API密钥",
+    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "model": "qwen-plus"
+  },
+  "meilisearch": {
+    "url": "你的Meilisearch服务器地址",
+    "api_key": "你的Meilisearch API密钥"
+  },
+  "embedding": {
+    "url": "你的向量嵌入服务地址",
+    "api_key": "你的向量嵌入服务API密钥",
+    "model": "bge-m3"
+  },
+  "search": {
+    "default_knowledge_base": "broker_reports",
+    "default_semantic_ratio": 0.5,
+    "default_top_k": 10,
+    "max_top_k": 100
+  }
+}
